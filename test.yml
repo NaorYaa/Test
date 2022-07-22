@@ -1,0 +1,20 @@
+rules:
+    - id: taint-rule
+      languages:
+        - js
+      message: SSRF via serverless http.client
+      mode: taint
+      pattern-sanitizers:
+        - pattern: squid
+      pattern-sinks:
+        - pattern: fetch(...)
+        - pattern: httpClient.$BLA(...) 
+        - pattern: http.$BLA(...)
+        - pattern: https.$BLA(...)
+        - pattern: got.$BLA(...)
+        - pattern: superagent.$BLA(...)
+      pattern-sources:
+        - patterns:
+          - pattern-either:
+              - pattern: req
+      severity: WARNING
