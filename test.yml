@@ -13,6 +13,7 @@ rules:
         - pattern: https.$BLA(...)
         - pattern: got.$BLA(...)
         - pattern: superagent.$BLA(...)
+        - pattern: axios.$BLA(...)
       pattern-sources:
         - patterns:
           - pattern-either:
